@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Pressable, Text, TextInput, View } from 'react-native';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default function App() {
@@ -48,8 +48,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.buttonsContainer}>
-        <Button title='+' onPress={handleLocalScoreChangeUp}/>
-        <Button title='-' onPress={handleLocalScoreChangeDown} disabled={localDisabled}/>
+        <Pressable style={styles.buttonLeft} onPress={handleLocalScoreChangeUp}>
+          <Text style={styles.buttonText}>+</Text>
+        </Pressable>
+        <Pressable style={styles.buttonLeft} onPress={handleLocalScoreChangeDown} disabled={localDisabled}>
+          <Text style={styles.buttonText}>-</Text>
+        </Pressable>
       </View>
       <View style={styles.teamsContainer}>
         <TextInput
@@ -68,8 +72,12 @@ export default function App() {
         <Text>{awayScore}</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <Button title='+' onPress={handleAwayScoreChangeUp}/>
-        <Button title='-' onPress={handleAwayScoreChangeDown} disabled={awayDisabled}/>
+        <Pressable style={styles.button} onPress={handleAwayScoreChangeUp}>
+          <Text style={styles.buttonText}>+</Text>
+        </Pressable>
+        <Pressable style={styles.button} onPress={handleAwayScoreChangeDown} disabled={awayDisabled}>
+          <Text style={styles.buttonText}>-</Text>
+        </Pressable>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -84,13 +92,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  buttonLeft: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    marginBottom: 10,
+    marginLeft: 90,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    marginBottom: 10,
+    marginRight: 90,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+  },
+  buttonText: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    color: 'white',
+  },
   teamsContainer: {
     alignItems: 'center',
     width: '30%',
-    marginBottom: 125
+    marginBottom: 125,
+    marginLeft: -90,
+    marginRight: -90
   },
   buttonsContainer: {
-    width: '20%'
+    width: '20%',
   },
   teamText: {
     marginBottom: 100
