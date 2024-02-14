@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2e117f1d-9bd5-4355-baeb-7860137286ac"
+      }
+    },
+    "owner": "ivandelmal"
   }
 }
